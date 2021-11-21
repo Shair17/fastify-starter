@@ -14,5 +14,4 @@ yarn install
 
 ## Authors
 
-- **Shair** - _Provided README Template_ -
-  [Shair](https://github.com/Shair17)
+- [Shair](https://github.com/Shair17)

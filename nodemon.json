@@ -1,0 +1,11 @@
+{
+  "watch": [
+      "src",
+      "tsconfig.json",
+      ".env",
+      "dev.env"
+  ],
+  "ext": ".ts,.js",
+  "ignore": [],
+  "exec": "ts-node ./src/main.ts"
+}

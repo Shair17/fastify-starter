@@ -7,8 +7,6 @@ async function main() {
 		ignoreTrailingSlash: true,
 	});
 
-	// await app.listen(+app.config.PORT, '0.0.0.0');
-
 	if (!!(require.main && module.children)) {
 		await app.listen(+app.config.PORT, '0.0.0.0');
 	}

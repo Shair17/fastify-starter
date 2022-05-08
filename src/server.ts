@@ -5,6 +5,7 @@ import Fastify, {
 	FastifyInstance,
 	FastifyLoggerInstance,
 } from 'fastify';
+import fastifyEnv from '@fastify/env';
 import { Server as IServer, IncomingMessage, ServerResponse } from 'http';
 import { resolve } from 'path';
 import { StatusCodes } from 'http-status-codes';
@@ -38,7 +39,7 @@ export default async function Server(
 > {
 	const server: FastifyInstance = Fastify(opts);
 
-	server.register(require('fastify-env'), {
+	server.register(fastifyEnv, {
 		dotenv: {
 			path: resolve(__dirname, '../.env'),
 			// debug: true,
@@ -51,7 +52,7 @@ export default async function Server(
 
 	server.register(require('fastify-no-icon'));
 
-	server.register(require('fastify-rate-limit'), {
+	server.register(require('@fastify/rate-limit'), {
 		max: 100,
 		timeWindow: '1 minute',
 	});
@@ -63,7 +64,7 @@ export default async function Server(
 		reply.send(error);
 	});
 
-	server.register(require('fastify-compress'));
+	server.register(import('@fastify/compress'));
 
 	// server.register(require('fastify-routes-stats'));
 

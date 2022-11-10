@@ -13,13 +13,9 @@ import { bootstrap } from 'fastify-decorators';
 import { schema } from './config/config.schema';
 import { AppController } from './controllers/v1';
 
-// https://github.com/L2jLiga/fastify-decorators/
+// See for fastify decorators info: https://github.com/L2jLiga/fastify-decorators/
 
 declare module 'fastify' {
-	// interface FastifyRequest {
-	// 	userId: string;
-	// }
-
 	interface FastifyInstance {
 		config: {
 			PORT: string;
@@ -42,13 +38,10 @@ export default async function Server(
 	server.register(fastifyEnv, {
 		dotenv: {
 			path: resolve(__dirname, '../.env'),
-			// debug: true,
 		},
 		confKey: 'config',
 		schema,
 	});
-
-	// server.register(require('fastify-file-upload'));
 
 	server.register(require('fastify-no-icon'));
 
@@ -65,12 +58,6 @@ export default async function Server(
 	});
 
 	server.register(import('@fastify/compress'));
-
-	// server.register(require('fastify-routes-stats'));
-
-	// server.get('/__stats', async function (_, reply) {
-	// reply.send(this.stats());
-	// });
 
 	server.register(bootstrap, {
 		controllers: [AppController],
